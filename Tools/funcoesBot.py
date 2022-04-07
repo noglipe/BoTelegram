@@ -1,8 +1,9 @@
+import os
 
 def validarUsuario(mensagem):
     print("Validando Usuário " + mensagem.from_user.username)
-    lista = ['lipeNogueira']
-    if mensagem.from_user.username in lista:
+
+    if mensagem.from_user.username in os.environ['lista']:
         return True
     else:
         return False
