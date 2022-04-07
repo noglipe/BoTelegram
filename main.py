@@ -1,5 +1,5 @@
 import telebot
-from Tools import funcoesBot
+from Tools.funcoesBot import validarUsuario
 from chave_api import CHAVE_API
 from Tools.acessoBinance import ConsultaBinance
 from Tools.bibliaConsulta import BibliaOnline
@@ -8,7 +8,7 @@ bot = telebot.TeleBot(CHAVE_API)
 
 @bot.message_handler(commands=["preço", "preco"])
 def consultarpreco(mensagem):
-    if funcoesBot.validarUsuario(mensagem):
+    if validarUsuario(mensagem):
         moeda = mensagem.text[7:].upper()
         consulta = ConsultaBinance(moeda)
         valor = consulta.consultarValor()
