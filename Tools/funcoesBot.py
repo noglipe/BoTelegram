@@ -7,5 +7,6 @@ def validarUsuario(mensagem):
     else:
         return False
 
-
+def usuario(mensagem):
+    print(mensagem.from_user.username)
 

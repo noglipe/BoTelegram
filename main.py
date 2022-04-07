@@ -2,7 +2,7 @@ import os
 
 import telebot
 import os
-from Tools.funcoesBot import validarUsuario
+from Tools.funcoesBot import validarUsuario, usuario
 #from chave_api import CHAVE_API
 from Tools.acessoBinance import ConsultaBinance
 from Tools.bibliaConsulta import BibliaOnline
@@ -24,12 +24,14 @@ def consultarpreco(mensagem):
 
 @bot.message_handler(commands=["va"])
 def verciculoAleatorio(mensagem):
+    usuario(mensagem)
     biblia = BibliaOnline
     biblia.verciculoAleatorio()
     bot.send_message(mensagem.chat.id, biblia.dados)
 
 @bot.message_handler(commands=["v"])
 def verciculo(mensagem):
+    usuario(mensagem)
     biblia = BibliaOnline()
     biblia.verciculo(mensagem)
     bot.send_message(mensagem.chat.id, biblia.dados)
@@ -40,6 +42,7 @@ def verificar(mensagem):
 
 @bot.message_handler(func=verificar)
 def responder(mensagem):
+    usuario(mensagem)
     bot.send_message(mensagem.chat.id, mensagem.from_user.first_name + " Bem vindo! Este é um robo Privado! \nAlgumas funções podem não funcionar se você não estiver cadastrado na plataforma!")
 
 #LoopInolfinito
