@@ -1,10 +1,12 @@
 import telebot
+import environ
 from Tools.funcoesBot import validarUsuario
 from chave_api import CHAVE_API
 from Tools.acessoBinance import ConsultaBinance
 from Tools.bibliaConsulta import BibliaOnline
 
-bot = telebot.TeleBot(CHAVE_API)
+env = environ.Env()
+bot = telebot.TeleBot(env['CHAVE_API'])
 
 @bot.message_handler(commands=["preço", "preco"])
 def consultarpreco(mensagem):
