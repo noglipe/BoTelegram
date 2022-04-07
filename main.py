@@ -1,6 +1,6 @@
 import telebot
 from Tools import funcoesBot
-from boTelegram.chave_api import CHAVE_API
+from chave_api import CHAVE_API
 from Tools.acessoBinance import ConsultaBinance
 from Tools.bibliaConsulta import BibliaOnline
 
