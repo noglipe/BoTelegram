@@ -3,7 +3,7 @@ import os
 import telebot
 import os
 from Tools.funcoesBot import validarUsuario
-from chave_api import CHAVE_API
+#from chave_api import CHAVE_API
 from Tools.acessoBinance import ConsultaBinance
 from Tools.bibliaConsulta import BibliaOnline
 
