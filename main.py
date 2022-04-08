@@ -41,7 +41,7 @@ def verificar(mensagem):
 @bot.message_handler(func=verificar)
 def responder(mensagem):
     bot.send_message(mensagem.chat.id,
-                     mensagem.from_user.first_name + " Bem vindo! Este é um robo Privado! \nAlgumas funções podem não funcionar se você não estiver cadastrado na plataforma!")
+                     mensagem.from_user.first_name + " Bem vindo! \nPara maiores informações acesse:\nhttps://github.com/noglipe/BoTelegram")
 
 
 # LoopInolfinito
