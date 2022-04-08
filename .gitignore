@@ -1,4 +1,6 @@
-/chave_api.py
+chave_api.py
+__pycache__/
 boTelegram/__pycache__/
-.idea
+.idea/
 Tools/__pycache__/
+*.log

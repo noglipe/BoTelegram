@@ -1,8 +1,7 @@
 import os
-
 import telebot
 import os
-from Tools.funcoesBot import validarUsuario, usuario
+from Tools.funcoesBot import validarUsuario
 #from chave_api import CHAVE_API
 from Tools.acessoBinance import ConsultaBinance
 from Tools.bibliaConsulta import BibliaOnline
@@ -21,6 +20,7 @@ def consultarpreco(mensagem):
             bot.send_message(mensagem.chat.id, f"*Moeda:* {moeda} \n*R$:* {valor}", parse_mode='Markdown')
     else:
         bot.send_message(mensagem.chat.id, "Usuário não autenticado!")
+
 
 @bot.message_handler(commands=["va"])
 def verciculoAleatorio(mensagem):
