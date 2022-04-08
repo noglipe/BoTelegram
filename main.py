@@ -7,6 +7,7 @@ from Tools.acessoBinance import ConsultaBinance
 from Tools.bibliaConsulta import BibliaOnline
 
 bot = telebot.TeleBot(os.environ['CHAVE_API'])
+print("ChatBot Iniciado")
 
 @bot.message_handler(commands=["preço", "preco"])
 def consultarpreco(mensagem):
