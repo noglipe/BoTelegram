@@ -21,3 +21,6 @@ class ConsultaBinance:
         else:
             dados = requisicao.json()
             return f"*Moeda:* {dados['symbol']} \n*R$:* {dados['price']}"
+
+    def alterarMoedaRetorno(self, moeda):
+        self.moedaParaRetorno = moeda
