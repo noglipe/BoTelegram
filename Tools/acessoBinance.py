@@ -1,19 +1,23 @@
 import requests
 
-class ConsultaBinance:
 
-    def __init__(self, cryptoConsulta, moedaRetorno='BRL'):
-        self.moedaRetorno = moedaRetorno
-        self.cryptoConsulta = cryptoConsulta
+class ConsultaBinance:
+    urlbase = "https://api.binance.com/api/v3/ticker/price?symbol="
+    moedaParaRetorno = ''
+    criptoParaConsulta = ''
+    simboloMoeda = ''
+
+    def __init__(self, criptoParaConsulta, moedaParaRetorno='BRL', simboloMoeda='R$'):
+        self.moedaParaRetorno = moedaParaRetorno
+        self.criptoParaConsulta = criptoParaConsulta
+        self.simboloMoeda = simboloMoeda
 
     def consultarValor(self):
-
-        codigo = self.cryptoConsulta + self.moedaRetorno
-        url = f"https://api.binance.com/api/v3/ticker/price?symbol={codigo}"
+        url = f"{self.urlbase}{self.criptoParaConsulta}{self.moedaParaRetorno}"
         requisicao = requests.get(url)
 
         if requisicao.status_code == 400:
-            return "Erro"
+            return "Erro ao realizar consulta!\nFavor Verificar o código da moeda!"
         else:
             dados = requisicao.json()
-            return dados['price']
+            return f"*Moeda:* {dados['symbol']} \n*R$:* {dados['price']}"
