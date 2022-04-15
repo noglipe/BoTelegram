@@ -1,9 +1,11 @@
 import os
 
 import telebot
+from time import sleep
 
 from Tools.acessoBinance import ConsultaBinance
 from Tools.bibliaConsulta import BibliaOnline
+from Tools.img_to_text import converter
 
 bot = telebot.TeleBot(os.environ['CHAVE_API'])
 print("ChatBot Iniciado")
@@ -40,8 +42,30 @@ def verificar(mensagem):
 
 @bot.message_handler(func=verificar)
 def responder(mensagem):
-    bot.send_message(mensagem.chat.id,
-                     mensagem.from_user.first_name + " Bem vindo! \nPara maiores informações acesse:\nhttps://github.com/noglipe/BoTelegram")
+    #bot.send_message(mensagem.chat.id,
+     #                mensagem.from_user.first_name + " Bem vindo! \nPara maiores informações acesse:\nhttps://github.com/noglipe/BoTelegram")
+    print(mensagem)
+
+
+def processPhotoMessage(message):
+    print ('message.photo =', message.photo)
+    fileID = message.photo[-1].file_id
+    print ('fileID =', fileID)
+    file = bot.get_file(fileID)
+    print ('file.file_path =', file.file_path)
+
+@bot.message_handler(content_types= ["photo"])
+def fotoPtexto(message):
+    file_path = bot.get_file(message.photo[-1].file_id).file_path
+    file = bot.download_file(file_path)
+    sleep(5)
+
+    with open('image.jpg', 'wb') as new_file:
+        new_file.write(file)
+
+    bot.send_photo(message.chat.id, file)
+    bot.send_message(message.chat.id, converter())
+
 
 
 # LoopInolfinito
