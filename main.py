@@ -63,7 +63,9 @@ def fotoPtexto(message):
     with open('image.jpg', 'wb') as new_file:
         new_file.write(file)
 
+    print(file)
     bot.send_photo(message.chat.id, file)
+
     bot.send_message(message.chat.id, converter())
 
 
